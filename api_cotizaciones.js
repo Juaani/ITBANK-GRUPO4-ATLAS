@@ -22,6 +22,7 @@ function api_request(){
             <p>Precio Venta: ${data[i].casa.venta}</p>`;      
         }      
     })
+    main();
 }
 
 function main(){
@@ -30,5 +31,8 @@ function main(){
     },50000)
 }
 
-api_request();
-main();
+//TODO: Ocultar el div de cotizaciones hasta que se aprete el botón, ahí hacerlo aparecer
+//TODO: Podriamos poner que si se apreta el botón, el nombre cambie a Ocultar detalles, y si se presiona devuelta volver a ocultar el div de cotizaciones
+
+// api_request();
+// main();
