@@ -10,6 +10,12 @@ let ids = [
 	"argentina",
 ];
 
+
+const divisas = document.getElementById('divisas');
+
+
+
+
 function api_request(){
     fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
     .then(response=>response.json())
@@ -30,5 +36,11 @@ function main(){
     },50000)
 }
 
-api_request();
-main();
+verDivisas.onclick = function()
+{
+    console.log("Ver divisas...");
+    api_request();
+    main();
+}
+// api_request();
+// main();
