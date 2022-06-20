@@ -37,17 +37,39 @@ function main(){
     },50000)
 }
 
-function FbotonOn() {
-    var uno = document.getElementById('botonOn');
-    if (uno.innerHTML == 'Ocultar Detalles') 
-        uno.innerHTML = 'Ver Detalles';
-    else uno.innerHTML = 'Ocultar Detalles'; 
+//function FbotonOn() {
+   // var uno = document.getElementById('botonOn');
+    //if (uno.innerHTML == 'Ocultar Detalles') 
+       // uno.innerHTML = 'Ver Detalles';
+    //else uno.innerHTML = 'Ocultar Detalles'; 
+  //}
+  function toggleClock(aq) {
+    var myClock = document.getElementById(aq);
+    var displaySetting = myClock.style.display;
+    var clockButton = document.getElementById('botonOn');
+    if (displaySetting == 'block') {
+      myClock.style.display = 'none';
+      clockButton.innerHTML = 'Ver Detalles';
+    }
+    else {
+      myClock.style.display = 'block';
+      clockButton.innerHTML = 'Ocultar Detalles';
+    }
   }
-  
+
   function todos(){
     api_request();
-    FbotonOn();
+    //FbotonOn();
+    toggleClock("titulocoti");
+    toggleClock("dolaroficial");
+    toggleClock("dolarblue");
+    toggleClock("dolarsoja");
+    toggleClock("dolarccl");
+    toggleClock("dolarbolsa");
+    toggleClock("bitcoin");
+    toggleClock("dolarturista");
 }
+
 
 
 //  api_request();
