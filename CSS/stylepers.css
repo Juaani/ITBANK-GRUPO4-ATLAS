@@ -20,7 +20,7 @@
   /* Login Page & Sign In Page */
   
   #background{
-    background-image: url('../images/bonaerense/BuenosAires.jpg');
+    background-image: url('./images/bonaerense/BuenosAires.jpg');
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -32,7 +32,7 @@
   /* Home Page */
   
   #homeBackground {
-    background-image: url('../images/bonaerense/Obelisk.jpg');
+    background-image: url('./images/bonaerense/Obelisk.jpg');
     background-size: cover;
     background-repeat: no-repeat;
   }
