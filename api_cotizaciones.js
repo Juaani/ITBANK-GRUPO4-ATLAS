@@ -36,12 +36,3 @@ function main(){
 
 // api_request();
 // main();
-
-
-
-
-
-
-
-
-</script>
