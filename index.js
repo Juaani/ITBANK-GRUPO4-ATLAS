@@ -1,4 +1,5 @@
+const cotizaciones = document.getElementById("cotizaciones");
+
 function hide(){
-    cards = document.querySelectorAll('card');
-    cards.
+    
 }

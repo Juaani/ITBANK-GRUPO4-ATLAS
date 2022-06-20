@@ -18,8 +18,8 @@ function api_request(){
             console.log(data[i].casa.nombre);
             let contenido= document.getElementById(ids[i]);            
             contenido.innerHTML=`${data[i].casa.nombre}<br>
-            <p>Precio Compra: ${data[i].casa.compra}</p><br>
-            <p>Precio Venta: ${data[i].casa.venta}</p>`;      
+            <p>Precio Compra: $${data[i].casa.compra}</p><br>
+            <p>Precio Venta: $${data[i].casa.venta}</p>`;      
         }      
     })
 }
