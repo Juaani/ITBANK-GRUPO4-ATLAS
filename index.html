@@ -17,6 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <link href="./CSS/styles.css" rel="stylesheet"/>
+        <link href="CSS\stylepers.css" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -93,9 +94,9 @@
                             </div>
                         </form>
                 </div>
-                <div class="col-md-6 px-0 d-none d-lg-block">
+                <div class="col-md-6 px-0 d-none d-lg-block" style="object-fit: cover; object-position: cover">
                     <img src="./images/bonaerense/Jardin-Botanico-Recorte.jpeg" alt="Login image"
-                    class=" w-100 h-auto" style="object-fit: cover; object-position: left; border-top-right-radius: 50px;">
+                    class=" w-100 h-auto" style="object-fit: cover; object-position: cover; border-top-right-radius: 50px; ">
                 </div>
             </div>
         </div>
@@ -140,19 +141,19 @@
                     </div>
                 </div>
                 <div id="cotizados" class="container my-5 text-center" >
-                    <h2 class="fw-normal">Cotizaciones</h2>
+                    <h2 class="fw-normal" id="titulocoti"></h2>
                     <div class="row">
-                        <div class="col card mb-4 dolar" id="dolaroficial">Dólar BNA</div>
-                        <div class="col card mb-4 dolar" id="dolarblue">Dólar blue</div>
-                        <div class="col card mb-4 dolar" id="dolarsoja">Dólar soja</div>
+                        <div class="col mb-4" id="dolaroficial"></div>
+                        <div class="col mb-4" id="dolarblue"></div>
+                        <div class="col mb-4" id="dolarsoja"></div>
                     </div>
                     <div class="row">
-                        <div class="col card mb-4 dolar" id="dolarccl">Dólar CCL</div>
-                        <div class="col card mb-4 dolar" id="dolarbolsa">Dólar MEP</div>
-                        <div class="col card mb-4 dolar" id="bitcoin">Bitcoin</div>
+                        <div class="col mb-4" id="dolarccl"></div>
+                        <div class="col mb-4" id="dolarbolsa"></div>
+                        <div class="col mb-4" id="bitcoin"></div>
                     </div>
                     <div class="row">
-                        <div class="col card mb-4 dolar" id="dolarturista">Dolar solidario</div>
+                        <div class="col-4 mb-4" id="dolarturista"></div>
                     </div>
                 </div>
                 <hr>
@@ -276,9 +277,12 @@
             </div>
             <script src="index.js"></script>
         </footer>
-        <style> #cotizado{
-            display:none;
-          }
+        <style> 
+          #homeBackground {
+    background-image: url('./images/bonaerense/Obelisk.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
         </style>
     </body>
 </html>
