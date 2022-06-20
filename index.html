@@ -110,7 +110,7 @@
 
                         <h2 class="fw-normal">Divisas</h2>
                         <p>Dólar, Euro, Real</p>
-                        <p><button id='botonOn'  onclick ="todos()"  class="btn btn-secondary" href="#">Ver Detalles »</button></p>
+                        <p><button id='botonOn' onclick ="todos()" class="btn btn-secondary" href="#">Ver Detalles »</button></p>
                     </div>
                     <div class="col-lg-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-credit-card-2-front-fill" viewBox="0 0 16 16">
@@ -140,7 +140,7 @@
                         <p><a class="btn btn-secondary" href="#">Ver Detalles »</a></p>
                     </div>
                 </div>
-                <div class="container my-5 text-center">
+                <div id="cotizados" class="container my-5 text-center" >
                     <h2 class="fw-normal">Cotizaciones</h2>
                     <div class="row">
                         <div class="col" id="dolaroficial">Dólar BNA</div>
@@ -277,5 +277,9 @@
                 </div>
             </div>
         </footer>
+        <style> #cotizado{
+            display:none;
+          }
+        </style>
     </body>
 </html>
