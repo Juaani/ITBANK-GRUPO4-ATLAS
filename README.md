@@ -15,16 +15,20 @@ Projecto de armado de Web para homebanking.
 |**Ciro Andres Patiño**          |[ciro-aps](https://github.com/ciro-aps)            |
 
 ## Estado del proyecto
-El proyecto se encuentra en el armado de la maqueta final a la que se le añadira funcionalidad utilizando javascript y diferentes tecnologias.
-Luego se iniciara en el armado del back-end correspondiente para poder llegar al producto final requerido.
+El proyecto se encuentra en el proceso de mejorar la acción de poder consultar el precio de las divisas actualizadas a tiempo real, como primer atractivo funcional de la Landing page para el Homebanking de ITBANK.
+Se espera seguir implementando estas tecnologías para brindar al usuario una buena cantidad de utilidades intuitivas y atractivas que hagan de factor diferencial frente a otras páginas.
+Luego se iniciara en el armado del back-end correspondiente para poder llegar al producto final esperado.
 
 ### Tecnologias Utilizadas
 * HTML 5
 * CSS 3
 * [Bootstrap 5.2](https://getbootstrap.com/)
+* Lenguaje Javascript: 
+    * Node.js
+    * Json 
 
 ### Administracion de tareas
 Segun experiencia con las tecnologias utilizadas con prioridad a enseñar a aquellos que necesiten.
 
-
+ 
 ### Issues
