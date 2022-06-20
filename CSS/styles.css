@@ -11699,3 +11699,18 @@ body {
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
 }
+
+.card { 
+  margin: 1rem;
+  border-radius: 0.75rem;
+  font-size: 1.25em;
+}
+
+.dolar{
+  background-color: rgba(13, 110, 253, 0.2);
+}
+
+.dolar:hover{
+  text-decoration: underline;
+  text-decoration-color: #323539;
+}

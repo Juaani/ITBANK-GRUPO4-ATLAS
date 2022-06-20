@@ -16,7 +16,7 @@
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-        <link href="/ITBANK-GRUPO4-ATLAS/CSS/styles.css" rel="stylesheet"/>
+        <link href="./CSS/styles.css" rel="stylesheet"/>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
         <nav class="navbar bg-light border-bottom">
             <div class="container">
                 <a class="navbar-brand" href="">
-                    <img src="images/logos/logomarginado-08.png" class="img-fluid float-start" alt="Logo ITBANK" width="336" height="115">
+                    <img src="./images/logos/logomarginado-08.png" class="img-fluid float-start" alt="Logo ITBANK" width="336" height="115">
                 </a>
                 <div class="d-block w-auto">
                     <ul class="nav nav-tabs nav-fill fs-5">
@@ -90,12 +90,12 @@
                             <h1 class="pb-5">Bienvenido</h1>
                             <p>Si estás ingresando como empresa, <a href="">clickeá aquí</a></p>
                             <div class="d-grid pt-1 mb-4">
-                                <a href="./singup.html" class="btn btn-success btn-lg shadow-lg" type="button">Ingresá a tu Cuenta</a>
+                                <a href="signup.html" class="btn btn-success btn-lg shadow-lg" type="button">Ingresá a tu Cuenta</a>
                             </div>
                         </form>
                 </div>
                 <div class="col-md-6 px-0 d-none d-lg-block">
-                    <img src="images/bonaerense/Jardin-Botanico-Recorte.jpeg" alt="Login image"
+                    <img src="./images/bonaerense/Jardin-Botanico-Recorte.jpeg" alt="Login image"
                     class=" w-100 h-auto" style="object-fit: cover; object-position: left; border-top-right-radius: 50px;">
                 </div>
             </div>
@@ -137,31 +137,30 @@
                 
                         <h2 class="fw-normal">Préstamos</h2>
                         <p>Tasa de referencia BCRA: 56,56%</p>
-                        <p><a class="btn btn-secondary" href="#">Ver Detalles »</a></p>
+                        <p><a class="btn btn-secondary" href="#" id="detalles">Ver Detalles »</a></p>
                     </div>
                 </div>
                 <div id="cotizados" class="container my-5 text-center" >
                     <h2 class="fw-normal">Cotizaciones</h2>
                     <div class="row">
-                        <div class="col" id="dolaroficial">Dólar BNA</div>
-                        <div class="col" id="dolarblue">Dólar blue</div>
-                        <div class="col" id="dolarsoja">Dólar soja</div>
+                        <div class="col card mb-4 dolar" id="dolaroficial">Dólar BNA</div>
+                        <div class="col card mb-4 dolar" id="dolarblue">Dólar blue</div>
+                        <div class="col card mb-4 dolar" id="dolarsoja">Dólar soja</div>
                     </div>
                     <div class="row">
-                        <div class="col" id="dolarccl">Dólar CCL</div>
-                        <div class="col" id="dolarbolsa">Dólar MEP</div>
-                        <div class="col" id="bitcoin">Bitcoin</div>
+                        <div class="col card mb-4 dolar" id="dolarccl">Dólar CCL</div>
+                        <div class="col card mb-4 dolar" id="dolarbolsa">Dólar MEP</div>
+                        <div class="col card mb-4 dolar" id="bitcoin">Bitcoin</div>
                     </div>
                     <div class="row">
-                        <div class="col" id="dolarturista">Dolar solidario</div>
+                        <div class="col card mb-4 dolar" id="dolarturista">Dolar solidario</div>
                     </div>
                 </div>
                 <hr>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 gx-4 mt-5">
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="images/corporativo/estados-financieros.jpg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
-                
+                            <img src="./images/corporativo/estados-financieros.jpg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
                             <div class="card-body">
                                 <p class="card-text">El Directorio de la compañía presentó el Balance 2021, arrojando éste excelentes resultados, que fortalecen la confianza en nuestro banco y valorizan nuestros activos...</p>
                                 <div class="d-flex justify-content-between align-items-center">
@@ -172,9 +171,9 @@
                     </div>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="images/corporativo/Acciones.jpeg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
+                            <img src="./images/corporativo/Acciones.jpeg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
                             <div class="card-body">
-                                <p class="card-text">Nuestras acciones son referencia en el Panel Líder de BYMA, marcando los buenos rendimientos de la plaza local. Los resultados del 2021 fortalecen esa tendencia...</p>
+                                <p class="card-text">Nuestras acciones son referencia en el Panel Líder de BYMA, marcando los rendimientos de la plaza local. Los resultados del 2021 fortalecen esa tendencia...</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <button type="button" class="btn btn-outline-secondary">Leé más...</button>
                                 </div>
@@ -183,7 +182,7 @@
                     </div>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="images/corporativo/Inclusion.jpeg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
+                            <img src="./images/corporativo/Inclusion.jpeg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
                             <div class="card-body">
                                 <p class="card-text">Fuimos reconocidos por nuestro programa de asistencia social e inclusión financiera, en el marco del Departamento de RSE. El BCRA reconoció nuestra labor...</p>
                                 <div class="d-flex justify-content-between align-items-center">
@@ -276,6 +275,7 @@
                     </ul>
                 </div>
             </div>
+            <script src="index.js"></script>
         </footer>
         <style> #cotizado{
             display:none;
