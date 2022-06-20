@@ -20,7 +20,9 @@ function api_request(){
     .then(data=>{
         for(let i in ids){
             console.log(data[i].casa.nombre);
-            let contenido= document.getElementById(ids[i]);            
+            let contenido= document.getElementById(ids[i]);
+            let titulo= document.getElementById("titulocoti")  
+            titulo.innerHTML= `Cotizaciones`    
             contenido.innerHTML= `<div id="infonueva" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
             <div class="card-header">${data[i].casa.nombre}</div>
           <p>Precio Compra: $${data[i].casa.compra}</p>
