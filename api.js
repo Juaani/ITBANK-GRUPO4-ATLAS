@@ -10,11 +10,14 @@ let ids = [
 	"argentina",
 ];
 
-
-let fechaEnMiliseg = Date.now()
-
+  const d = new Date();
+  let day = d.getDate();
+  let month = d.getMonth();
+  let hours = d.getHours();
+  let minute= d.getMinutes();
 
 function api_request(){
+  
     fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
     .then(response=>response.json())
     .then(data=>{
@@ -23,10 +26,32 @@ function api_request(){
             let contenido= document.getElementById(ids[i]);
             let titulo= document.getElementById("titulocoti")  
             titulo.innerHTML= `Cotizaciones`    
-            contenido.innerHTML= `<div id="infonueva" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-            <div class="card-header">${data[i].casa.nombre}</div>
-          <p>Precio Compra: $${data[i].casa.compra}</p>
-          <p>Precio Venta: $${data[i].casa.venta}</p>`;      
+            contenido.innerHTML= `<div id="infonueva" class="card bg-light mb-3" style="max-width: 18rem; background-color: #1d71b8"">
+            <div class="card-header bg-secondary text-white">${data[i].casa.nombre}</div>
+          <div class="row justify-content-md-center" style="display: flex;
+          width: 100%;">
+          <div class="col-6" style="font-size:80%">
+            Precio Venta:
+          </div>
+          <div class="col-6" style="font-size:80%">
+          Precio Compra:
+          </div>
+          </div>
+          <div class="row justify-content-md-center">
+          <div class="col-6">
+           <h4> $${data[i].casa.venta}</h4>
+          </div>
+          <div class="col-6">
+          <h4> $${data[i].casa.compra}</h4>
+          </div>
+          </div> 
+    
+          <div class="card-footer text-muted" style="font-size:60%">
+          Última actualización: ${day}/${month} ${hours}:${minute} hs
+        </div>
+
+        </div>
+          `;      
         }      
     })
 }
