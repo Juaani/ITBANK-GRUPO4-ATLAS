@@ -31,6 +31,20 @@ function main(){
     },50000)
 }
 
+function FbotonOn() {
+    var uno = document.getElementById('botonOn');
+    if (uno.innerHTML == 'Ocultar Detalles') 
+        uno.innerHTML = 'Ver Detalles';
+    else uno.innerHTML = 'Ocultar Detalles'; 
+  }
+  
+  function todos(){
+    api_request();
+    FbotonOn();
+}
+
+
+
 //  api_request();
 //  main();
 
