@@ -17,9 +17,10 @@ function api_request(){
         for(let i in ids){
             console.log(data[i].casa.nombre);
             let contenido= document.getElementById(ids[i]);            
-            contenido.innerHTML=`${data[i].casa.nombre}<br>
-            <p>Precio Compra: $${data[i].casa.compra}</p><br>
-            <p>Precio Venta: $${data[i].casa.venta}</p>`;      
+            contenido.innerHTML= `<div id="infonueva" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header">${data[i].casa.nombre}</div>
+          <p>Precio Compra: $${data[i].casa.compra}</p>
+          <p>Precio Venta: $${data[i].casa.venta}</p>`;      
         }      
     })
 }
