@@ -2574,8 +2574,8 @@ textarea.form-control-lg {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  /* -webkit-print-color-adjust: exact;
+          color-adjust: exact; */
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
@@ -11787,17 +11787,6 @@ body {
   border-radius: 0.25rem !important;
 }
 
-.card { 
-  margin: 1rem;
-  border-radius: 0.75rem;
-  font-size: 1.25em;
-}
-
-.dolar{
-  background-color: rgba(13, 110, 253, 0.2);
-}
-
-.dolar:hover{
+.tituloPrecios:hover{
   text-decoration: underline;
-  text-decoration-color: #323539;
 }
