@@ -18,6 +18,14 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+#azulito{
+  background-color: #1d71b8;
+  
+}
+#azul{
+  background-color: #312783;
+}
+
 /* Login Page & Sign In Page */
 
 #background{
@@ -45,6 +53,13 @@
   margin-top: 12rem;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
+}
+
+#baseImage {
+  border-top-right-radius: 50px;
+  object-fit: cover;
+  object-position: cover;
+  float: right;
 }
 
 .bg-image-vertical {

@@ -7,7 +7,7 @@
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link href="./CSS/styles.css" rel="stylesheet"/>
-        <link href="CSS\stylepers.css" rel="stylesheet" />
+        <link href="./CSS/stylepers.css" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -54,13 +54,13 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                         <form>
-                            <div class="form-outline mb-4">
-                                <input type="email" id="loginName" class="form-control" />
-                                <label class="form-label" for="loginName">E-Mail o Usuario</label>
+                            <div class="form-floating mb-4">
+                                <input type="email" id="loginName" class="form-control" placeholder="Usuario"/>
+                                <label for="loginName">E-Mail o Usuario</label>
                             </div>
-                            <div class="form-outline mb-4">
-                                <input type="password" id="loginPassword" class="form-control" />
-                                <label class="form-label" for="loginPassword">Contraseña</label>
+                            <div class="form-floating mb-4">
+                                <input type="password" id="loginPassword" class="form-control" placeholder="Contraseña"/>
+                                <label for="loginPassword">Contraseña</label>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-md-6 d-flex justify-content-center">
@@ -81,25 +81,25 @@
                     </div>
                     <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
                         <form>
-                            <div class="form-outline mb-4">
-                                <input type="text" id="registerName" class="form-control" />
-                                <label class="form-label" for="registerName">Nombre Completo</label>
+                            <div class="form-floating mb-4">
+                                <input type="text" id="registerName" class="form-control" placeholder="Nombre y Apellido"/>
+                                <label for="registerName">Nombre Completo</label>
                             </div>
-                            <div class="form-outline mb-4">
-                                <input type="text" id="registerUsername" class="form-control" />
-                                <label class="form-label" for="registerUsername">Usuario</label>
+                            <div class="form-floating mb-4">
+                                <input type="text" id="registerUsername" class="form-control" placeholder="Usuario"/>
+                                <label for="registerUsername">Usuario</label>
                             </div>
-                            <div class="form-outline mb-4">
-                                <input type="email" id="registerEmail" class="form-control" />
-                                <label class="form-label" for="registerEmail">E-Mail</label>
+                            <div class="form-floating mb-4">
+                                <input type="email" id="registerEmail" class="form-control" placeholder="E-Mail"/>
+                                <label for="registerEmail">E-Mail</label>
                             </div>
-                            <div class="form-outline mb-4">
-                                <input type="password" id="registerPassword" class="form-control" />
+                            <div class="form-floating mb-4">
+                                <input type="password" id="registerPassword" class="form-control" placeholder="Contraseña"/>
                                 <label class="form-label" for="registerPassword">Contraseña</label>
                             </div>
-                            <div class="form-outline mb-4">
-                                <input type="password" id="registerRepeatPassword" class="form-control" />
-                                <label class="form-label" for="registerRepeatPassword">Confirmar contraseña</label>
+                            <div class="form-floating mb-4">
+                                <input type="password" id="registerRepeatPassword" class="form-control" placeholder="Confirmar Contraseña"/>
+                                <label for="registerRepeatPassword">Confirmar contraseña</label>
                             </div>
                             <div class="form-check d-flex justify-content-center mb-4">
                                 <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
