@@ -22,7 +22,11 @@ function api_request(){
     .then(response=>response.json())
     .then(data=>{
       for(let i in ids){
-          // console.log(data[i].casa.nombre);
+          console.log(data[i].casa.nombre);
+          console.log(data[i].casa.venta);
+          console.log(data[i].casa.compra);
+          // let compraSoja = data[2].casa.compra;
+          // compraSoja = "-";
           let contenido= document.getElementById(ids[i]);
           let titulo= document.getElementById("titulocoti")  
           titulo.innerHTML= `Cotizaciones`    
@@ -59,25 +63,25 @@ function api_request(){
           </div>
         <div class="row justify-content-md-center" style="display: flex;
         width: 100%;;">
-        <div class="col-6" style="font-size:80%">
+          <div class="col-6" style="font-size:80%">
           Precio Venta:
-        </div>
-        <div class="col-6" style="font-size:80%">
-        Precio Compra:
-        </div>
+         </div>
+          <div class="col-6" style="font-size:80%">
+          Precio Compra:
+          </div>
         </div>
         <div class="row justify-content-md-center">
-        <div class="col-6">
-         <h4 style=" padding: 5%"> $${data[i].casa.venta}</h4>
-        </div>
-        <div class="col-6">
-        <h4 style=" padding: 5%">-</h4>
-        </div>
+          <div class="col-6">
+            <h4 style=" padding: 5%"> $${data[i].casa.venta}</h4>
+          </div>
+          <div class="col-6">
+            <h4 style=" padding: 5%">-</h4>
+          </div>
         </div> 
   
         <div class="card-footer text-muted" style="font-size:60%">
         Última actualización: ${day}/${month} ${hours}:${minute} hs
-      </div>
+        </div>
 
       </div>
         `
