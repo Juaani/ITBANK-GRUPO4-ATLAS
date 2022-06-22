@@ -29,7 +29,7 @@
 /* Login Page & Sign In Page */
 
 #background{
-  background-image: url('./images/bonaerense/BuenosAires.jpg');
+  background-image: url('/images/bonaerense/BuenosAires.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -42,7 +42,7 @@
 /* Home Page */
 
 #homeBackground {
-  background-image: url('./images/bonaerense/Obelisk.jpg');
+  background-image: url('/images/bonaerense/Obelisk.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -68,13 +68,13 @@
   background-repeat: no-repeat;
   background-position: right center;
   background-size: auto 100%;
-  }
-  
-  #Logobarra {
-    max-width: 35%;
-    width: 100px; 
-    object-position:top;
-  }
+}
+
+#Logobarra {
+  max-width: 35%;
+  width: 100px; 
+  object-position:top;
+}
 
 
 
@@ -89,13 +89,6 @@
 #link{
   text-decoration: none;
   color: white;
-}
-#azulito{
-  background-color: #1d71b8;
-  
-}
-#azul{
-  background-color: #312783;
 }
 
 /*----------------------------------------*/

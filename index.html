@@ -7,7 +7,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         
         <link href="./CSS/styles.css" rel="stylesheet"/>
-        <link href="./CSS/stylepers.css" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -100,7 +99,7 @@
 
                         <h2 class="fw-normal">Divisas</h2>
                         <p>Dólar, Euro, Real</p>
-                        <p><button id='botonOn' onclick ="todos()" class="btn btn-secondary" href="#">Ver Detalles »</button></p>
+                        <p><button id='botonDivisas' onclick ="toggleCurrencies()" class="btn btn-secondary" href="#">Ver Detalles »</button></p>
                     </div>
                     <div class="col-lg-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-credit-card-2-front-fill" viewBox="0 0 16 16">
@@ -130,20 +129,17 @@
                         <p><a class="btn btn-secondary" href="#" id="detalles">Ver Detalles »</a></p>
                     </div>
                 </section>
-                <section id="cotizados" class="container my-5 text-center" ></div>
-                    <h2 class="fw-normal" id="titulocoti" style="text-align: center;"></h2>
-                    <div class="row">
-                        <div class="col mb-4" id="dolaroficial"></div>
-                        <div class="col mb-4" id="dolarblue"></div>
-                        <div class="col mb-4" id="dolarsoja"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-4" id="dolarccl"></div>
-                        <div class="col mb-4" id="dolarbolsa"></div>
-                        <div class="col mb-4" id="bitcoin"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 mb-4" id="dolarturista"></div>
+                <section id="seccionCotizaciones" class="container my-5 text-center px-5 text-center" style="display: none;">
+                    <hr style="width: 110%; margin-left: -4rem;">
+                    <h2 class="fw-normal">Cotizaciones</h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-md-center text-center g-4">
+                        <div class="col" id="dolarOficial"></div>
+                        <div class="col" id="dolarBlue"></div>
+                        <div class="col" id="dolarSoja"></div>
+                        <div class="col" id="dolarContadoConLiqui"></div>
+                        <div class="col" id="dolarBolsa"></div>
+                        <div class="col" id="bitcoin"></div>
+                        <div class="col" id="dolarTurista"></div>
                     </div>
                 </section>
                 <hr>
@@ -265,14 +261,6 @@
                     </ul>
                 </div>
             </div>
-            <script src="index.js"></script>
         </footer>
-        <style> 
-          #homeBackground {
-    background-image: url('./images/bonaerense/Obelisk.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-        </style>
     </body>
 </html>
