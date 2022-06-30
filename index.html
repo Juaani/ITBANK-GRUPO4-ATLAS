@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <style>
-            #azulito{
-                background-color: #1d71b8;
-                
-            }
-            #azul{
-                background-color: #312783;
-            }
-        </style>
-        </style>
         <title>ITBANK</title>
         <link rel="icon" href="./images/logos/ISOLOGO.png">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+        
         <link href="./CSS/styles.css" rel="stylesheet"/>
-        <link href="CSS\stylepers.css" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -58,7 +47,7 @@
                             </a>
                         </li>
                         <li  class="nav-item d-inline">
-                            <a class="nav-link link-success fw-bolder" href="./singup.html">
+                            <a class="nav-link link-success fw-bolder" href="./signup.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                 </svg>
@@ -83,26 +72,26 @@
                 </div>
             </div>
         </nav>
-        <div class="container-md bg-light shadow-lg" id="homeHero">
+        <div class="container-md bg-light shadow-lg px-0" id="homeHero">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 px-3">
                         <form class="w-100 px-5 pt-5">
                             <h1 class="pb-5">Bienvenido</h1>
                             <p>Si estás ingresando como empresa, <a href="">clickeá aquí</a></p>
                             <div class="d-grid pt-1 mb-4">
-                                <a href="signup.html" class="btn btn-success btn-lg shadow-lg" type="button">Ingresá a tu Cuenta</a>
+                                <a href="./signup.html" class="btn btn-success btn-lg shadow-lg" type="button">Ingresá a tu Cuenta</a>
                             </div>
                         </form>
                 </div>
-                <div class="col-md-6 px-0 d-none d-lg-block" style="object-fit: cover; object-position: cover">
+                <div class="col-lg-6 d-none d-lg-block">
                     <img src="./images/bonaerense/Jardin-Botanico-Recorte.jpeg" alt="Login image"
-                    class=" w-100 h-auto" style="object-fit: cover; object-position: cover; border-top-right-radius: 50px; ">
+                    class=" w-100 h-auto" id="baseImage">
                 </div>
             </div>
         </div>
         <main class="container-fluid bg-light" style="padding-top: 10rem; padding-bottom: 5rem;">
             <div class="container">
-                <div class="row text-center">
+                <section class="row row-cols-1 row-cols-sm-2 text-center">
                     <div class="col-lg-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
                             <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
@@ -110,7 +99,7 @@
 
                         <h2 class="fw-normal">Divisas</h2>
                         <p>Dólar, Euro, Real</p>
-                        <p><button id='botonOn' onclick ="todos()" class="btn btn-secondary" href="#">Ver Detalles »</button></p>
+                        <p><button id='botonDivisas' onclick ="toggleCurrencies()" class="btn btn-secondary" href="#">Ver Detalles »</button></p>
                     </div>
                     <div class="col-lg-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-credit-card-2-front-fill" viewBox="0 0 16 16">
@@ -139,25 +128,22 @@
                         <p>Tasa de referencia BCRA: 56,56%</p>
                         <p><a class="btn btn-secondary" href="#" id="detalles">Ver Detalles »</a></p>
                     </div>
-                </div>
-                <div id="cotizados" class="container my-5 text-center" ></div>
-                    <h2 class="fw-normal" id="titulocoti" style="text-align: center;"></h2>
-                    <div class="row">
-                        <div class="col mb-4" id="dolaroficial"></div>
-                        <div class="col mb-4" id="dolarblue"></div>
-                        <div class="col mb-4" id="dolarsoja"></div>
+                </section>
+                <section id="seccionCotizaciones" class="container my-5 text-center px-5 text-center" style="display: none;">
+                    <hr style="width: 110%; margin-left: -4rem;">
+                    <h2 class="fw-normal">Cotizaciones</h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-md-center text-center g-4">
+                        <div class="col" id="dolarOficial"></div>
+                        <div class="col" id="dolarBlue"></div>
+                        <div class="col" id="dolarSoja"></div>
+                        <div class="col" id="dolarContadoConLiqui"></div>
+                        <div class="col" id="dolarBolsa"></div>
+                        <div class="col" id="bitcoin"></div>
+                        <div class="col" id="dolarTurista"></div>
                     </div>
-                    <div class="row">
-                        <div class="col mb-4" id="dolarccl"></div>
-                        <div class="col mb-4" id="dolarbolsa"></div>
-                        <div class="col mb-4" id="bitcoin"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 mb-4" id="dolarturista"></div>
-                    </div>
-                </div>
+                </section>
                 <hr>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 gx-4 mt-5">
+                <section class="row row-cols-1 row-cols-sm-2 row-cols-md-3 gx-5 mt-5">
                     <div class="col">
                         <div class="card shadow-sm">
                             <img src="./images/corporativo/estados-financieros.jpg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
@@ -192,7 +178,7 @@
                         </div>
                     </div>
                     <button type="button" class="btn btn-outline-success btn-lg mx-auto mt-5">Ver Más</button>
-                </div>
+                </section>
             </div>
         </main>
 
@@ -275,14 +261,6 @@
                     </ul>
                 </div>
             </div>
-            <script src="index.js"></script>
         </footer>
-        <style> 
-          #homeBackground {
-    background-image: url('./images/bonaerense/Obelisk.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-        </style>
     </body>
 </html>
