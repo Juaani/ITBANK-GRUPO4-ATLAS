@@ -6,7 +6,7 @@ TIPOINDEX=10
 ESTADOINDEX=9
 
 # TODO: poner una ruta interna al proyecto (en el mismo repo), sino no va a funcionar en las PC's de los profes
-f=open("D:\ITBA\FULLSTACK\FSD\Sprint 4\\archivito.csv", "r") #INSERTAR ARCHIVO CSV
+f = open("archivo.csv", "w") #INSERTAR ARCHIVO CSV
 #f=open("archivo.csv", "r")
 
 campos= ["NroCheque","CodigoBanco","CodigoSucursal","NumeroCuentaOrigen","NumeroCuentaDestino","Valor","FechaOrigen","FechaPago","DNI","Estado"]
