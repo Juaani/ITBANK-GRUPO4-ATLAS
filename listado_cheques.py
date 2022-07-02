@@ -31,13 +31,13 @@ def csvOutput(usuario): #INGRESA LA LISTA DEL USUARIO, CREA UN ARCHIVO CSV USAND
     for cheques in usuario:
         listtoprint=["Fecha Origen: "+ cheques[FECHAORIGENINDEX] , " Fecha Pago: "
         +cheques[FECHAPAGOINDEX]," Valor: "+cheques[5]," Cuenta: "+cheques[3]]
-        with open("D:\ITBA\FULLSTACK\FSD\Sprint 4\ "+cheques[DNIINDEX]+" "+str(datetime.timestamp(datetime.now()))+".csv", 'w', newline='') as output:
+        with open(cheques[DNIINDEX]+" "+str(datetime.timestamp(datetime.now()))+".csv", 'w', newline='') as output:
             writer=csv.writer(output)
             writer.writerow(listtoprint)
         pass
 
 def csvOutput2(usuario): #INGRESA LISTA DEL USUARIO, CREA ARCHIVO CSV CON EL FORMATO E IMPRIME LOS DATOS PEDIDOS DE TODOS LOS CHEQUES
-    with open("D:\ITBA\FULLSTACK\FSD\Sprint 4\ "+usuario[0][DNIINDEX]+" "+str(datetime.timestamp(datetime.now()))+".csv", 'a') as output:
+    with open(usuario[0][DNIINDEX]+" "+str(datetime.timestamp(datetime.now()))+".csv", 'a') as output:
         for cheques in usuario:
             for cheque in cheques:
                 output.write(str(cheque) + ',')
