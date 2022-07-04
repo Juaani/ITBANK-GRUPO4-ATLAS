@@ -2,42 +2,53 @@ import csv
 from datetime import datetime
 from datetime import date
 
-DNIINDEX=8
-TIPOINDEX=9
-ESTADOINDEX=10
-FECHAORIGENINDEX=6
-FECHAPAGOINDEX=7
+NUMERO_CHEQUE_INDEX=0
+
+FECHA_ORIGEN_INDEX=6
+FECHA_PAGO_INDEX=7
+DNI_INDEX=8
+TIPO_INDEX=9
+ESTADO_INDEX=10
 
 f=open("test.csv", "r") #INSERTAR ARCHIVO CSV
 #f=open("archivo.csv", "r")
 
 campos= ["NroCheque","CodigoBanco","CodigoSucursal","NumeroCuentaOrigen","NumeroCuentaDestino","Valor","FechaOrigen","FechaPago","DNI","Estado"]
 
-datos_csv= csv.reader(f)
+datosCsv= csv.reader(f)
 datos=[]
-for linea in datos_csv: #Mete los datos del csv en datos[]
+for linea in datosCsv: #Mete los datos del csv en datos[]
     datos.append(linea)
 
 
 
 def searchDNI(dni): #BUSCA EL USUARIO INGRESANDO EL DNI Y DEVUELVE UNA LISTA CON TODOS LOS CHEQUES DEL DNI
-    listadni=[]
+    listaDni=[]
     for usuario in datos:
-        if(usuario[DNIINDEX]==dni):
-            listadni.append(usuario)
-    return listadni        
+        if(usuario[DNI_INDEX]==dni):
+            listaDni.append(usuario)
+    return listaDni
 
-def csvOutput(usuario): #INGRESA LA LISTA DEL USUARIO, CREA UN ARCHIVO CSV USANDO EL FORMATO Y IMPRIME LOS DATOS DEL PRIMER CHEQUE DEL USER
+def doesChequeRepeat(listaUsuario):
+    for usuario in listaUsuario:
+        for entry in datos:
+            if (usuario[NUMERO_CHEQUE_INDEX] == entry[NUMERO_CHEQUE_INDEX]):
+                return True
+    return False
+
+def csvOutputFirst(usuario): #INGRESA LA LISTA DEL USUARIO, CREA UN ARCHIVO CSV USANDO EL FORMATO Y IMPRIME LOS DATOS DEL PRIMER CHEQUE DEL USER
     for cheques in usuario:
-        listtoprint=["Fecha Origen: "+ cheques[FECHAORIGENINDEX] , " Fecha Pago: "
-        +cheques[FECHAPAGOINDEX]," Valor: "+cheques[5]," Cuenta: "+cheques[3]]
-        with open(cheques[DNIINDEX]+" "+str(datetime.timestamp(datetime.now()))+".csv", 'w', newline='') as output:
+        listToPrint=["Fecha Origen: "+ cheques[FECHA_ORIGEN_INDEX] , " Fecha Pago: "
+        + cheques[FECHA_PAGO_INDEX]," Valor: "+cheques[5]," Cuenta: "+cheques[3]]
+        with open(cheques[DNI_INDEX]+" "+str(datetime.timestamp(datetime.now()))+".csv", 'w', newline='') as output:
             writer=csv.writer(output)
-            writer.writerow(listtoprint)
+            writer.writerow(listToPrint)
         pass
 
-def csvOutput2(usuario): #INGRESA LISTA DEL USUARIO, CREA ARCHIVO CSV CON EL FORMATO E IMPRIME LOS DATOS PEDIDOS DE TODOS LOS CHEQUES
-    with open(usuario[0][DNIINDEX]+" "+str(datetime.timestamp(datetime.now()))+".csv", 'a') as output:
+
+
+def csvOutputAll(usuario): #INGRESA LISTA DEL USUARIO, CREA ARCHIVO CSV CON EL FORMATO E IMPRIME LOS DATOS PEDIDOS DE TODOS LOS CHEQUES
+    with open(usuario[0][DNI_INDEX]+" "+str(datetime.timestamp(datetime.now()))+".csv", 'a') as output:
         for cheques in usuario:
             for cheque in cheques:
                 output.write(str(cheque) + ',')
@@ -48,57 +59,60 @@ def pantallaOutput(usuario): #IMPRIME LA LISTA DEL USUARIO EN LA PANTALLA
         print( "NroCheque: " +cheques[0]+" CodigoBanco: " +cheques[1]+
         " CodigoSucursal: "+cheques[2]+" NumeroCuentaOrigen: "+cheques[3]+
         " NumeroCuentaDestino: "+cheques[4]+" Valor: "+cheques[5]+
-        " Fecha Origen: "+ cheques[FECHAORIGENINDEX] + " Fecha Pago: "+cheques[FECHAPAGOINDEX]+
-        " Dni: " + cheques[DNIINDEX] + " Estado: "+cheques[ESTADOINDEX] + " Tipo: "+cheques[TIPOINDEX])
+        " Fecha Origen: "+ cheques[FECHA_ORIGEN_INDEX] + " Fecha Pago: "+cheques[FECHA_PAGO_INDEX]+
+        " Dni: " + cheques[DNI_INDEX] + " Estado: "+cheques[ESTADO_INDEX] + " Tipo: "+cheques[TIPO_INDEX])
 
 def estadoCheque(usuario,estado): #MODIFICA LA LISTA DE CHEQUES SEGUN EL ESTADO
-    listafinal=[]
+    listaFinal=[]
     for cheques in usuario:
-        if (cheques[ESTADOINDEX]==estado):
-            listafinal.append(cheques)
+        if (cheques[ESTADO_INDEX]==estado):
+            listaFinal.append(cheques)
         elif (estado==""):
-            listafinal.append(cheques)
-    return listafinal
+            listaFinal.append(cheques)
+    return listaFinal
 
 def tipoCheque(usuario,tipo): #MODIFICA LA LISTA DE CHEQUES SEGUN EL TIPO
-    listafinal=[]
+    listaFinal=[]
     for cheques in usuario:
-        if (cheques[TIPOINDEX]==tipo):
-            listafinal.append(cheques)
-    return listafinal
-
-
+        if (cheques[TIPO_INDEX]==tipo):
+            listaFinal.append(cheques)
+    return listaFinal
 
 def filtrarRangoFecha(usuario,desde,hasta): #PLANTILLA DE LA FUNCION PARA FILTRAR POR FECHA
-    listafinal=[]
+    listaFinal=[]
     for cheques in usuario:
-        if (desde<= date.fromtimestamp(cheques[FECHAORIGENINDEX]) <= hasta):
-            listafinal.append(cheques)
-    return listafinal
+        if (desde<= date.fromtimestamp(cheques[FECHA_ORIGEN_INDEX]) <= hasta):
+            listaFinal.append(cheques)
+    return listaFinal
 
 def main(): #MAIN DEL PROGRAMA
     # f=input("Ingrese nombre de archivo csv")
-    listausuario=searchDNI(str(input("Ingrese DNI sin comas ni puntos: ")))
-    # print(listausuario)
-    salida=input("Ingrese parametro de salida: ")
-    
-    #Modifica segun el tipo del cheque
-    listausuario=tipoCheque(listausuario,input("Imprimir cheque por tipo:\nEMITIDO o DEPOSITADO: "))
-    
-    #Modifica segun el estado del cheque
-    if("SI"==input("Filtrar por estado de cheque? INSERTE SI o NO: ")):
-        listausuario=estadoCheque(listausuario,input("Imprimir cheque por estado:\nPENDIENTE, APROBADO, RECHAZADO: "))
-    
-    #Filtro de rango de fechas    
-    if("SI"==input("Filtrar por rango de fecha? INSERTE SI o NO: ")):
-        listausuario=filtrarRangoFecha(listausuario,date.fromtimestamp(input("Ingrese primer fecha de filtrado en timestamp:")),date.fromtimestamp(input("Ingrese fecha de cierre de filtrado en timestamp:")))
-    
-    if(salida=="CSV"): #IMPRIME SEGUN LA SALIDA DETERMINADA ANTERIORMENTE
-        csvOutput2(listausuario)
-    elif(salida=="PANTALLA"):
-        pantallaOutput(listausuario)
-
-
-
+    listaUsuario=searchDNI(str(input("Ingrese DNI sin comas ni puntos: ")))
+    # Chequea si hay actividad bajo este DNI
+    if len(listaUsuario) == 0:
+        # Salida de Error
+        print("No hay cheques emitidos o depositados a este DNI")
+    elif doesChequeRepeat(listaUsuario):
+        # Salida de Error
+        print("El identificador del cheque coincide con otros en el sistema.")
+    else:
+        # print(listaUsuario)
+        salida=input("Ingrese tipo de salida. \nPANTALLA o CSV: ")
+        
+        # Modifica segun el tipo del cheque
+        listaUsuario=tipoCheque(listaUsuario,input("Imprimir cheque por tipo.\nEMITIDO o DEPOSITADO: "))
+        
+        # Modifica segun el estado del cheque
+        if("SI"==input("Filtrar por estado de cheque? INSERTE SI o NO: ")):
+            listaUsuario=estadoCheque(listaUsuario,input("Imprimir cheque por estado.\nPENDIENTE, APROBADO, RECHAZADO: "))
+        
+        # Filtro de rango de fechas    
+        if("SI"==input("Filtrar por rango de fecha? INSERTE SI o NO: ")):
+            listaUsuario=filtrarRangoFecha(listaUsuario,date.fromtimestamp(input("Ingrese primer fecha de filtrado en timestamp: ")),date.fromtimestamp(input("Ingrese fecha de cierre de filtrado en timestamp: ")))
+        
+        if(salida=="CSV"): # Imprime segun la salida determinada previamente
+            csvOutputAll(listaUsuario)
+        elif(salida=="PANTALLA"):
+            pantallaOutput(listaUsuario)
 
 main()
