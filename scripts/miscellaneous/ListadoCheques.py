@@ -10,7 +10,7 @@ DNI_INDEX=8
 TIPO_INDEX=9
 ESTADO_INDEX=10
 
-f=open("test.csv", "r") #INSERTAR ARCHIVO CSV
+f=open("../../test.csv", "r") #INSERTAR ARCHIVO CSV
 #f=open("archivo.csv", "r")
 
 campos= ["NroCheque","CodigoBanco","CodigoSucursal","NumeroCuentaOrigen","NumeroCuentaDestino","Valor","FechaOrigen","FechaPago","DNI","Estado"]
@@ -32,7 +32,7 @@ def searchDNI(dni): #BUSCA EL USUARIO INGRESANDO EL DNI Y DEVUELVE UNA LISTA CON
 def doesChequeRepeat(listaUsuario):
     for usuario in listaUsuario:
         for entry in datos:
-            if (usuario[NUMERO_CHEQUE_INDEX] == entry[NUMERO_CHEQUE_INDEX]):
+            if (usuario[NUMERO_CHEQUE_INDEX] == entry[NUMERO_CHEQUE_INDEX] and usuario[DNI_INDEX] != entry[DNI_INDEX]):
                 return True
     return False
 
