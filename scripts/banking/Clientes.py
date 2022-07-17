@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod, abstractproperty
 from Cuenta import Cuenta
+import json
 
 class Cliente:
     def __init__(self, nombre, apellido, numero, dni, direccion):
@@ -42,6 +43,11 @@ class Cliente:
 class Classic(Cliente):
     def __init__(self, nombre, apellido, numero, dni, direccion):
         super().__init__(self, nombre, apellido, numero, dni, direccion)
+        nombre = classic["nombre"]
+        apellido = classic["apellido"]
+        dni = classic["dni"]
+        numero = classic["numero"]
+        direccion = classic["direccion"]
 
     def puede_crear_chequera(self):
         return False
@@ -55,6 +61,11 @@ class Classic(Cliente):
 class Gold(Cliente):
     def __init__(self, nombre, apellido, numero, dni, direccion):
         super().__init__(self, nombre, apellido, numero, dni, direccion)
+        nombre = gold["nombre"]
+        apellido = gold["apellido"]
+        dni = gold["dni"]
+        numero = gold["numero"]
+        direccion = gold["direccion"]
 
     def puede_crear_chequera(self):
         return True
@@ -68,6 +79,11 @@ class Gold(Cliente):
 class Black(Cliente):
     def __init__(self, nombre, apellido, numero, dni, direccion):
         super().__init__(self, nombre, apellido, numero, dni, direccion)
+        nombre = black["nombre"]
+        apellido = black["apellido"]
+        dni = black["dni"]
+        numero = black["numero"]
+        direccion = black["direccion"]
 
     def puede_crear_chequera(self):
         return True
@@ -77,3 +93,11 @@ class Black(Cliente):
 
     def puede_comprar_dolar(self):
         return True
+
+b = open("eventos_black.json","r")
+c = open("eventos_classic.json","r")
+g = open("eventos_gold.json","r")
+
+black = json.loads(b)
+classic = json.loads(c)
+gold = json.loads(g)
