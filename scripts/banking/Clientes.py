@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod, abstractproperty
+from pickle import NONE
 from Cuenta import Cuenta
+from scripts.banking.Cuenta import CuentaAhorroDolares, CuentaAhorroPesos, CuentaCorriente
 
 class Cliente:
     def __init__(self, nombre, apellido, numero, dni, direccion):
@@ -42,6 +44,7 @@ class Cliente:
 class Classic(Cliente):
     def __init__(self, nombre, apellido, numero, dni, direccion):
         super().__init__(self, nombre, apellido, numero, dni, direccion)
+        self.cuenta_ahorro_pesos=CuentaAhorroPesos(10000,150000,0,1)
 
     def puede_crear_chequera(self):
         return False
@@ -55,6 +58,8 @@ class Classic(Cliente):
 class Gold(Cliente):
     def __init__(self, nombre, apellido, numero, dni, direccion):
         super().__init__(self, nombre, apellido, numero, dni, direccion)
+        self.cuenta_corriente_pesos=CuentaCorriente(20000,500000,0,0.5,10000,-10000)
+        self.cuenta_ahorro_dolares=CuentaAhorroDolares(None,None,0,0.5)
 
     def puede_crear_chequera(self):
         return True
@@ -68,6 +73,10 @@ class Gold(Cliente):
 class Black(Cliente):
     def __init__(self, nombre, apellido, numero, dni, direccion):
         super().__init__(self, nombre, apellido, numero, dni, direccion)
+        self.cuenta_ahorro_pesos = CuentaAhorroPesos(100000,None,0,0)
+        self.cuenta_corriente_pesos= CuentaCorriente(100000,None,0,0,10000,None)
+        self.cuenta_ahorro_dolares = CuentaAhorroDolares(100000,None,0,0)
+
 
     def puede_crear_chequera(self):
         return True
