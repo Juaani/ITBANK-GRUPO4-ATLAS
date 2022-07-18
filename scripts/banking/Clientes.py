@@ -4,7 +4,7 @@ from Cuenta import Cuenta
 
 
 class Cliente(ABC):
-    def __init__(self, nombre: str, apellido: str, numero: int, dni: int, direccion: dict):
+    def __init__(self, nombre: str, apellido: str, numero: int, dni: str, direccion: dict):
         self._nombre = nombre
         self._apellido = apellido
         self._numero = numero
@@ -20,11 +20,7 @@ class Cliente(ABC):
         self._tarjetasCredito = 0
         self._chequeras = 0
 
-        self._cuentas = {
-            "cajaAhorroPesos": None,
-            "cajaAhorroDolares": None,
-            "cuentaCorriente": None,
-        }
+        self._cuentas = {}
 
     @property
     @abstractmethod
@@ -45,29 +41,74 @@ class Cliente(ABC):
         pass
 
     def puede_comprar_dolar(self) -> bool:
-        return self._cuentas["cajaAhorroDolares"] is not None
+        return "cajaAhorroDolares" in self._cuentas
+
+    @property
+    def nombre(self) -> str:
+        return self._nombre
+
+    @property
+    def apellido(self) -> str:
+        return self._apellido
+
+    @property
+    def numero(self) -> int:
+        return self._numero
+
+    @property
+    def dni(self) -> str:
+        return self._dni
+
+    @property
+    def direccion(self) -> object:
+        return self._direccion
+
+    def __repr__(self):
+        return f'Nombre: {self._nombre} || Apellido: {self._apellido} ||' \
+               f' Numero: {self._numero} || DNI: {self._dni} || Direccion: [{self._direccion}] ||' \
+               f' Tarjetas de Credito: {self._tarjetasCredito} || Chequeras: {self._chequeras}'
 
     class Direccion:
-        def __init__(self, pais: str, provincia: str, ciudad: str, calle: str, numero: int):
-            self.pais = pais
-            self.provincia = provincia
-            self.ciudad = ciudad
-            self.calle = calle
-            self.numero = numero
+        def __init__(self, pais: str, provincia: str, ciudad: str, calle: str, numero: str):
+            self._pais = pais
+            self._provincia = provincia
+            self._ciudad = ciudad
+            self._calle = calle
+            self._numero = numero
 
         def validate(self) -> bool:
             if type(self.pais) == str:
-                if type(self.provincia) == str:
-                    if type(self.ciudad) == str:
-                        if type(self.calle) == str:
-                            if type(self.numero) == int:
+                if type(self._provincia) == str:
+                    if type(self._ciudad) == str:
+                        if type(self._calle) == str:
+                            if type(self._numero) == str:
                                 return True
             else:
                 return False
 
         def __repr__(self):
-            return f'Pais: {self.pais} || Provincia: {self.provincia} ||' \
-                   f' Ciudad: {self.ciudad} || Calle: {self.calle} {self.numero}'
+            return f'Pais: {self.pais} || Provincia: {self._provincia} ||' \
+                   f' Ciudad: {self._ciudad} || Calle: {self._calle} {self._numero}'
+
+        @property
+        def pais(self) -> str:
+            return self._pais
+
+        @property
+        def provincia(self) -> str:
+            return self._provincia
+
+        @property
+        def ciudad(self) -> str:
+            return self._ciudad
+
+        @property
+        def calle(self) -> str:
+            return self._calle
+
+        @property
+        def numero(self) -> str:
+            return self._numero
 
 
 class Classic(Cliente):
@@ -78,10 +119,15 @@ class Classic(Cliente):
     # La comision por transferencia es del 1%
     # No puede recibir transferencias mayores a $150.000 sin previo aviso
 
-    def __init__(self, nombre: str, apellido: str, numero: int, dni: int, direccion: dict):
-        super().__init__(self, nombre, apellido, numero, dni, direccion)
+    def __init__(self, nombre: str, apellido: str, numero: int, dni: str, direccion: dict):
+        super().__init__(nombre, apellido, numero, dni, direccion)
 
-        self._cuentas["cajaAhorroPesos"] = Cuenta(10000, 150000, 1.0, 0)
+        self._cuentas["cajaAhorroPesos"] = Cuenta(
+            limite_extraccion_diario=10000,
+            limite_transferencia_recibida=150000,
+            costo_transferencias=1.0,
+            saldo_descubierto_disponible=0
+        )
 
     def _max_chequeras(self) -> int:
         return 0
@@ -106,15 +152,30 @@ class Gold(Cliente):
     # La comision por transferencia es del 0,5%
     # No puede recibir transferencias mayores a $500.000 sin previo aviso
 
-    def __init__(self, nombre: str, apellido: str, numero: int, dni: int, direccion: dict):
-        super().__init__(self, nombre, apellido, numero, dni, direccion)
+    def __init__(self, nombre: str, apellido: str, numero: int, dni: str, direccion: dict):
+        super().__init__(nombre, apellido, numero, dni, direccion)
 
         self._maxTarjetasCredito = 1
         self._maxChequeras = 1
 
-        self._cuentas["cajaAhorroPesos"] = Cuenta(20000, 500000, 0.5, 10000)
-        self._cuentas["cajaAhorroDolares"] = Cuenta(20000, 500000, 0.5, 10000)
-        self._cuentas["cuentaCorriente"] = Cuenta(20000, 500000, 0.5, 10000)
+        self._cuentas["cajaAhorroPesos"] = Cuenta(
+            limite_extraccion_diario=20000,
+            limite_transferencia_recibida=500000,
+            costo_transferencias=0.5,
+            saldo_descubierto_disponible=10000
+        )
+        self._cuentas["cajaAhorroDolares"] = Cuenta(
+            limite_extraccion_diario=20000,
+            limite_transferencia_recibida=500000,
+            costo_transferencias=0.5,
+            saldo_descubierto_disponible=10000
+        )
+        self._cuentas["cuentaCorriente"] = Cuenta(
+            limite_extraccion_diario=20000,
+            limite_transferencia_recibida=500000,
+            costo_transferencias=0.5,
+            saldo_descubierto_disponible=10000
+        )
 
     @property
     def _max_chequeras(self) -> int:
@@ -140,15 +201,30 @@ class Black(Cliente):
     # No aplican comisiones por transferencia
     # No aplican restricciones para recibir transferencias
 
-    def __init__(self, nombre: str, apellido: str, numero: int, dni: int, direccion: dict):
-        super().__init__(self, nombre, apellido, numero, dni, direccion)
+    def __init__(self, nombre: str, apellido: str, numero: int, dni: str, direccion: dict):
+        super().__init__(nombre, apellido, numero, dni, direccion)
 
         self._maxTarjetasCredito = 5
         self._maxChequeras = 2
 
-        self._cuentas["cajaAhorroPesos"] = Cuenta(100000, None, None, 10000)
-        self._cuentas["cajaAhorroDolares"] = Cuenta(100000, None, None, 10000)
-        self._cuentas["cuentaCorriente"] = Cuenta(100000, None, None, 10000)
+        self._cuentas["cajaAhorroPesos"] = Cuenta(
+            limite_extraccion_diario=100000,
+            limite_transferencia_recibida=0,
+            costo_transferencias=0.0,
+            saldo_descubierto_disponible=10000
+        )
+        self._cuentas["cajaAhorroDolares"] = Cuenta(
+            limite_extraccion_diario=100000,
+            limite_transferencia_recibida=0,
+            costo_transferencias=0.0,
+            saldo_descubierto_disponible=10000
+        )
+        self._cuentas["cuentaCorriente"] = Cuenta(
+            limite_extraccion_diario=100000,
+            limite_transferencia_recibida=0,
+            costo_transferencias=0.0,
+            saldo_descubierto_disponible=10000
+        )
 
     @property
     def _max_chequeras(self) -> int:
