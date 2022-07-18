@@ -1,3 +1,6 @@
+from mimetypes import init
+
+
 class Cuenta:
     def __init__(self, limite_extraccion_diario: int, limite_transferencia_recibida: int,
                  costo_transferencias: float, saldo_descubierto_disponible: int):
