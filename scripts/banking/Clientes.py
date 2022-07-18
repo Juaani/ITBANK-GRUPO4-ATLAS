@@ -20,7 +20,7 @@ class Cliente(ABC):
         self._tarjetasCredito = 0
         self._chequeras = 0
 
-        self._cuentas = {}
+        self._cajaAhorroDolares = False
 
     @property
     @abstractmethod
@@ -32,16 +32,14 @@ class Cliente(ABC):
     def _max_tarjetas_credito(self) -> int:
         pass
 
-    @abstractmethod
     def puede_crear_chequera(self) -> bool:
-        pass
+        return self._chequeras < self._max_chequeras
 
-    @abstractmethod
     def puede_crear_tarjeta_credito(self) -> bool:
-        pass
+        return self._tarjetasCredito < self._max_tarjetas_credito
 
     def puede_comprar_dolar(self) -> bool:
-        return "cajaAhorroDolares" in self._cuentas
+        return self._cajaAhorroDolares
 
     @property
     def nombre(self) -> str:
@@ -122,24 +120,20 @@ class Classic(Cliente):
     def __init__(self, nombre: str, apellido: str, numero: int, dni: str, direccion: dict):
         super().__init__(nombre, apellido, numero, dni, direccion)
 
-        self._cuentas["cajaAhorroPesos"] = Cuenta(
+        self._cuenta = Cuenta(
             limite_extraccion_diario=10000,
             limite_transferencia_recibida=150000,
             costo_transferencias=1.0,
             saldo_descubierto_disponible=0
         )
+        self._cajaAhorroDolares = True
+        self._cuentaCorriente = True
 
     def _max_chequeras(self) -> int:
         return 0
 
     def _max_tarjetas_credito(self) -> int:
         return 0
-
-    def puede_crear_chequera(self) -> bool:
-        return False
-
-    def puede_crear_tarjeta_credito(self) -> bool:
-        return False
 
 
 class Gold(Cliente):
@@ -158,24 +152,14 @@ class Gold(Cliente):
         self._maxTarjetasCredito = 1
         self._maxChequeras = 1
 
-        self._cuentas["cajaAhorroPesos"] = Cuenta(
+        self._cuenta = Cuenta(
             limite_extraccion_diario=20000,
             limite_transferencia_recibida=500000,
             costo_transferencias=0.5,
             saldo_descubierto_disponible=10000
         )
-        self._cuentas["cajaAhorroDolares"] = Cuenta(
-            limite_extraccion_diario=20000,
-            limite_transferencia_recibida=500000,
-            costo_transferencias=0.5,
-            saldo_descubierto_disponible=10000
-        )
-        self._cuentas["cuentaCorriente"] = Cuenta(
-            limite_extraccion_diario=20000,
-            limite_transferencia_recibida=500000,
-            costo_transferencias=0.5,
-            saldo_descubierto_disponible=10000
-        )
+        self._cajaAhorroDolares = True
+        self._cuentaCorriente = True
 
     @property
     def _max_chequeras(self) -> int:
@@ -184,12 +168,6 @@ class Gold(Cliente):
     @property
     def _max_tarjetas_credito(self) -> int:
         return 1
-
-    def puede_crear_chequera(self) -> bool:
-        return self._chequeras < self._max_chequeras
-
-    def puede_crear_tarjeta_credito(self) -> bool:
-        return self._tarjetasCredito < self._max_tarjetas_credito
 
 
 class Black(Cliente):
@@ -207,24 +185,13 @@ class Black(Cliente):
         self._maxTarjetasCredito = 5
         self._maxChequeras = 2
 
-        self._cuentas["cajaAhorroPesos"] = Cuenta(
+        self._cuenta = Cuenta(
             limite_extraccion_diario=100000,
             limite_transferencia_recibida=0,
             costo_transferencias=0.0,
             saldo_descubierto_disponible=10000
         )
-        self._cuentas["cajaAhorroDolares"] = Cuenta(
-            limite_extraccion_diario=100000,
-            limite_transferencia_recibida=0,
-            costo_transferencias=0.0,
-            saldo_descubierto_disponible=10000
-        )
-        self._cuentas["cuentaCorriente"] = Cuenta(
-            limite_extraccion_diario=100000,
-            limite_transferencia_recibida=0,
-            costo_transferencias=0.0,
-            saldo_descubierto_disponible=10000
-        )
+        self._cajaAhorroDolares = True
 
     @property
     def _max_chequeras(self) -> int:
@@ -233,9 +200,3 @@ class Black(Cliente):
     @property
     def _max_tarjetas_credito(self) -> int:
         return 5
-
-    def puede_crear_chequera(self) -> bool:
-        return self._chequeras < self._max_chequeras
-
-    def puede_crear_tarjeta_credito(self) -> bool:
-        return self._tarjetasCredito < self._max_tarjetas_credito
